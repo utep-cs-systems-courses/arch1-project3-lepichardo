@@ -8,7 +8,7 @@ CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 AR              = msp430-elf-ar
 
-libLcd.a: font-11x16.o font-5x7.o font-8x12.o lcdutils.o lcddraw.o
+libLcd.a: font-11x16.o font-5x7.o font-8x12.o lcdutils.o lcddraw.o lcdDrawShapes.o
 	$(AR) crs $@ $^
 
 lcddraw.o: lcddraw.c lcddraw.h lcdutils.h
@@ -20,7 +20,7 @@ install: libLcd.a
 	cp *.h ../h
 
 clean:
-	rm -f libLcd.a *.o *.elf
+	rm -f libLcd.a *.o *.elf *~ *#
 
 lcddemo.elf: lcddemo.o libLcd.a 
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 
