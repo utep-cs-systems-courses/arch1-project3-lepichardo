@@ -3,26 +3,7 @@
 #include "lcdutils.h"
 #include "lcddraw.h"
 #include "switch.h"
-// WARNING: LCD DISPLAY USES P1.0.  Do not touch!!! 
-/*
-#define LED BIT6		/* note that bit zero req'd for display */
-/*
-#define SW1 1
-#define SW2 2
-#define SW3 4
-#define SW4 8
 
-#define SWITCHES 15
-
-*/
-char switch_update_interrupt_sense()
-{
-  char p2val = P2IN;
-  /* update switch interrupt to detect changes from current buttons */
-  P2IES |= (p2val & SWITCHES);	/* if switch up, sense down */
-  P2IES &= (p2val | ~SWITCHES);	/* if switch down, sense up */
-  return p2val;
-}
 
 void switch_init()			/* setup switch */
 {  
