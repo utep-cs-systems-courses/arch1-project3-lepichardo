@@ -4,7 +4,22 @@
 int state;
 static int fCol;
 static int fRow;
-void changeFigure();
-void fourCornersState();
+int machine;
+
+void changeFigureState();
+void fourCorners();
+void squareMove();
+void squareGoRight();
+void squareGoDown();
+void squareGoLeft();
+void squareGoUp();
+
+void toggleLeds();
+
+void callBuzzer();
+void buzzerGoDown();
+void buzzerGoUp();
+
+void currentStateMachine();
 
 #endif

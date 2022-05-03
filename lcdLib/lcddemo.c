@@ -7,9 +7,13 @@
 #include "lcddraw.h"
 #include "lcdDrawShapes.h"
 #include "animations.h"
-
-#define led BIT0
-
+#include "led.h"
+#include "buzzer.h"
+/*
+#define greenLed BIT0
+#define redLed BIT6
+#define leds (greenLed | redLed)
+*/
 // Define switches
 #define sw1 BIT0
 #define sw2 BIT1
@@ -21,10 +25,9 @@
 int main()
 {
   configureClocks();
-
-  P1DIR |= led;
-  P1OUT &= ~led;
   
+  led_init();
+  buzzer_init();
   // Activate switches
   P2REN |= switches;
   P2IE |= switches;
@@ -35,9 +38,13 @@ int main()
   u_char width = screenWidth, height = screenHeight;
   
   clearScreen(COLOR_WHITE);
-  //drawString11x16(20,20, "O0O", COLOR_BLACK, COLOR_RED);
+  drawString11x16(20,20, "hello", COLOR_BLACK, COLOR_RED);
+
+  //enableWDTInterrupts();
   
+  P1OUT &= ~leds;
   or_sr(0x18);
+  P1OUT |= leds;
 }
 
 void switch_interrupt_handler(){
@@ -48,18 +55,22 @@ void switch_interrupt_handler(){
   
   if (~pval & sw1){
     state = 1;
+    machine = 1;
     enableWDTInterrupts();
   }  
   if (~pval & sw2){
     state = 2;
+    machine = 2;
     enableWDTInterrupts();
   }
   if (~pval & sw3){
     state = 3;
+    machine = 3;
     enableWDTInterrupts();
   }
   if (~pval & sw4){
     state = 4;
+    machine = 4;
     enableWDTInterrupts();
   }
 }

@@ -5,7 +5,7 @@
 //int fCol = 50, fRow = 50;
 void drawTriangle(u_int color, int length, int fCol, int fRow){
 
-  clearScreen(COLOR_WHITE);
+  //clearScreen(COLOR_WHITE);
   //int fCol = 50, fRow = 50;
   for (int a = 0; a < length; a++){
     drawPixel(fCol + a, fRow + a, color);
@@ -25,7 +25,7 @@ void drawTriangle(u_int color, int length, int fCol, int fRow){
 
 void drawAsterisc(u_int color, int length, int fCol, int fRow){
 
-  clearScreen(COLOR_WHITE);
+  //clearScreen(COLOR_WHITE);
   //int fCol = 50, fRow = 50;
   for ( int a = 0; a < length; a++){
     drawPixel(fCol + a, fRow + a, color);
@@ -36,7 +36,7 @@ void drawAsterisc(u_int color, int length, int fCol, int fRow){
 }
 
 void drawSquare(u_int color, int length, int fCol,int fRow){
-  clearScreen(COLOR_WHITE);
+  //clearScreen(COLOR_WHITE);
   //int fCol = 50, fRow = 50;
   for ( int a = 0; a < length; a++){
     drawPixel(fCol + a, fRow, color);
