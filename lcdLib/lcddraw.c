@@ -118,7 +118,7 @@ void drawString11x16(u_char col, u_char row, char *string, u_int fgColorBGR, u_i
   u_char cols = col;
   while (*string) {
     drawChar11x16(cols, row, *string++, fgColorBGR, bgColorBGR);
-    cols += 17;
+    cols += 12;
   }
 }
 
